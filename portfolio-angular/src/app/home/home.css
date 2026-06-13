@@ -1,0 +1,40 @@
+mat-card {
+    max-width: 800px;
+    margin: 40px auto;
+    border-radius: 16px;
+    border-top: 5px solid #af06d1;
+    box-shadow: 0 4px 15px rgba(87, 11, 87, 0.12);
+    transition: transform 0.3s ease;
+}
+
+mat-card:hover {
+    transform: translateY(-3px);
+}
+
+mat-card-header {
+    padding-bottom: 12px;
+}
+
+mat-card-title {
+    color: #570b57;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+mat-card-subtitle {
+    color: #ab5084;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+mat-card-content {
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+mat-card-content p {
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}

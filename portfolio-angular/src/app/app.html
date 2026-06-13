@@ -1,28 +1,93 @@
-<header>
-  <h1>{{ title() }}</h1>
-  <p>Portfólio pessoal desenvolvido com Angular.</p>
-</header>
+<mat-toolbar color="primary">
 
-<section>
-  <h2>Sobre Mim</h2>
-  <p>
-    Meu nome é Gabriela Bomfati Garcia, sou estudante da área de Informática 
-    e tenho interesse em banco de dados, desenvolvimento web, programação e tecnologia.
-  </p>
-</section>
+  <button mat-button (click)="menuLateral.toggle()">
+    ☰
+  </button>
 
-<section>
-  <h2>Formações</h2>
-  <ul>
-    <li>Ensino Fundamental Completo</li>
-    <li>Ensino Médio Técnico em Informática - IFPR - Ponta Grossa (em andamento)</li>
-  </ul>
-</section>
+  <span>Meu Portfólio</span>
 
-<section>
-  <h2>Contato</h2>
-  <ul>
-  <li>Email: gabrielabomfatigarcia@email.com</li>
-  <li>GitHub: github.com/GabrielaBomfati</li>
-  </ul>
-</section>
+  <span class="espacador"></span>
+
+  <a
+    mat-button
+    routerLink="/"
+    routerLinkActive="ativo"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Início
+  </a>
+
+  <a
+    mat-button
+    routerLink="/sobre"
+    routerLinkActive="ativo"
+  >
+    Sobre
+  </a>
+
+  <a
+    mat-button
+    routerLink="/projetos"
+    routerLinkActive="ativo"
+  >
+    Projetos
+  </a>
+
+  <a
+    mat-button
+    routerLink="/contato"
+    routerLinkActive="ativo"
+  >
+    Contato
+  </a>
+
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+
+  <mat-sidenav #menuLateral mode="side" opened>
+
+    <a
+      mat-button
+      routerLink="/"
+      routerLinkActive="ativo"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Início
+    </a>
+
+    <a
+      mat-button
+      routerLink="/sobre"
+      routerLinkActive="ativo"
+    >
+      Sobre
+    </a>
+
+    <a
+      mat-button
+      routerLink="/projetos"
+      routerLinkActive="ativo"
+    >
+      Projetos
+    </a>
+
+    <a
+      mat-button
+      routerLink="/contato"
+      routerLinkActive="ativo"
+    >
+      Contato
+    </a>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <main style="padding: 24px;">
+      <router-outlet></router-outlet>
+    </main>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
