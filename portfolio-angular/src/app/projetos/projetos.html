@@ -1,16 +1,32 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Projetos 🗂️</mat-card-title>
-        <mat-card-subtitle>Técnico em Informática - IFPR CRPG</mat-card-subtitle>
-    </mat-card-header>
+@if (projetos$ | async; as projetos) {
 
-    <mat-card-content> 
-        <p> 
-            Esta seção será utilizada para apresentar projetos desenvolvidos ao longo da minha formação acadêmica e trajetória na área de tecnologia. 
+  @if (projetos.length === 0) {
+    <p>Nenhum projeto publicado ainda.</p>
+  }
 
-        </p> 
-        <p> 
-            Em breve, novos projetos e atividades serão adicionados aqui. 
-        </p> 
-    </mat-card-content>
-</mat-card>
+  @for (p of projetos; track p.id) {
+    <mat-card style="margin-bottom: 12px;">
+      <mat-card-header>
+        <mat-card-title>{{ p.nome }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ p.tecnologias }} - {{ p.ano }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ p.descricao }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        @if (p.link_github) {
+          <a mat-button [href]="p.link_github" target="_blank" rel="noopener">
+            Ver no GitHub
+          </a>
+        }
+      </mat-card-actions>
+    </mat-card>
+  }
+  } @else {
+  <p>Carregando projetos...</p>
+}
+
