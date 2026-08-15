@@ -68,14 +68,14 @@ Conceito pretendido: A
 
 Justificativa:
 
-Consumo da API (Projetos): projeto.service.ts (GET da API) + projetos.ts (async pipe com Observable)
-
-Catálogo (Tecnologias): tecnologia.service.ts (GET da API) + catalogo.ts (async pipe e @for)
-
-Botão Ver no GitHub: projetos.html com property binding [href] dentro de mat-card-actions
-
-Boas práticas de arquitetura: serviços centralizam HTTP e componentes apenas exibem dados
-
-Tratamento de estado: projetos.html e catalogo.html possuem estados de carregamento e mensagem quando não há dados
-
-Uso de Angular moderno: uso de async pipe e @for para renderização reativa
+contato.html - linhas 6 a 17: validação visual do campo nome, email e mensagem, exibida somente quando o controle está inválido e foi tocado, com mensagem de texto e ícone de alerta, além  da associação entre label e campos por meio de for/id, garantindo identificação adequada dos campos.
+contato.html - linhas 20 a 22: botão desabilitado enquanto o formulário está inválido ou durante o envio, além da exibição do estado "Enviando...".
+contato.html - linhas 25 e 26: mensagens de sucesso e erro são apresentadas por texto, não dependendo somente de cores para transmitir informação.
+contato.ts - linha 5: importação de HttpErrorResponse para tipar o tratamento dos erros HTTP.
+contato.ts - linhas 24 a 36: método focarPrimeiroCampoInvalido() identifica o primeiro controle inválido e direciona o foco para seu elemento correspondente.
+contato.ts - linhas 38 a 44: formulário inválido é marcado como tocado e o primeiro campo inválido recebe foco antes do envio.
+contato.ts - linhas 52 a 59: error recebe HttpErrorResponse, verifica respostas HTTP 400 e aproveita os erros retornados pelo backend por meio de err.error?.erros. E o estado enviando é redefinido para false, permitindo que o botão seja utilizado novamente após um erro.
+api/contato.php - linhas 27 a 31:backend realiza validação dos dados recebidos e armazena os erros em um array.
+api/contato.php - linhas 33 a 37: quando existem erros de validação, a API retorna HTTP 400 com os erros no formato { "erros": [...] }, permitindo que o Angular aproveite essas mensagens.
+api/contato.php - linhas 40 a 44: dados válidos são gravados no banco utilizando prepared statement.
+api/contato.php - linhas 47 a 52: API retorna HTTP 201 e uma resposta JSON contendo sucesso, id e mensagem de confirmação.

@@ -1,40 +1,117 @@
-mat-card {
+/* src/app/contato.css */
+
+h2 {
     max-width: 800px;
-    margin: 40px auto;
+    margin: 40px auto 25px;
+    color: #570b57;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+/* Formulário */
+form {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    background-color: #fff;
     border-radius: 16px;
     border-top: 5px solid #af06d1;
     box-shadow: 0 4px 15px rgba(87, 11, 87, 0.12);
-    transition: transform 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-mat-card:hover {
-    transform: translateY(-3px);
-}
-
-mat-card-header {
-    padding-bottom: 12px;
-}
-
-mat-card-title {
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
     color: #570b57;
-    font-size: 28px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* Campos */
+input,
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    border: 2px solid #EDDCED;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #444;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Quando clicar no campo */
+input:focus,
+textarea:focus {
+    border-color: #af06d1;
+    box-shadow: 0 0 0 3px rgba(175, 6, 209, 0.12);
+}
+
+/* Área da mensagem */
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* Mensagens de validação dos campos */
+.erro {
+    color: #b42318;
+    background: #fdecec;
+    border: 1px solid #b42318;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-top: 12px;
+    font-weight: 600;
+}
+/* Mensagem de sucesso */
+.ok {
+    max-width: 800px;
+    margin: 20px auto 30px;
+    padding: 14px 18px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #dcfce7;
+    border-left: 5px solid #16a34a;
+    color: #15803d;
+    font-size: 16px;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-mat-card-subtitle {
-    color: #ab5084;
-    font-size: 18px;
+/* Botão */
+button {
+    display: block;
+    width: 100%;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #570b57;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-mat-card-content {
-    margin-top: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+/* Hover do botão */
+button:hover:not(:disabled) {
+    background-color: #af06d1;
+    transform: translateY(-2px);
 }
 
-mat-card-content p {
-    color: #444;
-    font-size: 1.1rem;
-    line-height: 1.6;
+/* Botão desabilitado */
+button:disabled {
+    background-color: #c9b8c9;
+    color: #f5f5f5;
+    cursor: not-allowed;
+    transform: none;
 }

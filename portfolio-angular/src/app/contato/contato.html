@@ -1,17 +1,30 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Contato 📬</mat-card-title>
-        <mat-card-subtitle>Técnico em Informática - IFPR CRPG</mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content> 
-        <p> 
-            Esta página será destinada aos meus meios de contato.
-
-        </p> 
-        <p> 
-            Em breve, novas informações serão adicionadas para facilitar a comunicação.
-        </p> 
-    </mat-card-content>
-</mat-card>
-
+<!--src/app/contato.html-->
+<h2>Fale comigo</h2>
+<form [formGroup] = "form" (ngSubmit)="onSubmit()">
+    <label for="nome">Nome</label>
+    <input id="nome" type="text" formControlName="nome">
+    @if (form.get('nome')?.invalid && form.get('nome')?.touched) {
+        <p class="erro">⚠️ Informe um nome (mín. 3 letras)</p>
+    }
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email">
+    @if (form.get('email')?.invalid && form.get('email')?.touched) {
+        <p class="erro">⚠️ E-mail inválido</p>
+    }
+        <label for="mensagem">Mensagem</label>
+    <textarea id="mensagem" formControlName="mensagem" rows="4"></textarea>
+    @if (form.get('mensagem')?.invalid && form.get('mensagem')?.touched) {
+        <p class="erro">⚠️ Mensagem muito curta (mín. 10)</p>
+    }
+    <!--botao desabiloitado enquanto envia; troca o texto-->
+    <button type="submit" [disabled]="enviando || form.invalid">
+        {{enviando ? 'Enviando...' : 'Enviar'}}
+    </button>
+</form>
+<!--estados de retorno-->
+@if (sucesso) {
+    <p class="ok">✅ {{sucesso}}</p>
+}
+@if (erro) {
+    <p class="erro">⚠️ {{erro}}</p>
+}
