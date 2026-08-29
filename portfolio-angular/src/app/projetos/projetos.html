@@ -1,5 +1,7 @@
 @if (projetos$ | async; as projetos) {
-
+@if (erro) {
+  <p class="erro-campo">{{ erro }}</p>
+}
   @if (projetos.length === 0) {
     <p>Nenhum projeto publicado ainda.</p>
   }

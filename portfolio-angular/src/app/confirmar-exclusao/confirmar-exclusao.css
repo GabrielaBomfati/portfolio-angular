@@ -1,0 +1,67 @@
+h2 {
+
+    color: #570b57;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-weight: 700;
+
+}
+
+mat-dialog-content {
+
+    min-width: 350px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: #444;
+
+}
+
+mat-dialog-content p {
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+}
+
+.aviso {
+
+    color: #570b57;
+
+    font-weight: 600;
+
+}
+
+mat-dialog-actions {
+
+    padding-bottom: 16px;
+
+    padding-right: 16px;
+
+    gap: 10px;
+
+}
+
+button {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-weight: 600;
+
+}
+
+button:last-child {
+
+    background-color: #b42318;
+
+    color: white;
+
+}
+
+button:last-child:hover {
+
+    background-color: #dc2626;
+
+}

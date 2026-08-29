@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ProjetoService, Projeto } from '../projeto.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -10,14 +10,25 @@ import { AsyncPipe } from '@angular/common';
   imports: [MatCardModule, MatButtonModule, AsyncPipe],
   templateUrl: './projetos.html',
   styleUrl: './projetos.css',
+
+
+
+
+  
 })
 export class Projetos {
 
   private service = inject(ProjetoService);
 
   projetos$!: Observable<Projeto[]>;
+  erro = '';
 
   ngOnInit() {
-    this.projetos$ = this.service.listar();
-  }
+  this.projetos$ = this.service.listar().pipe(
+    catchError(() => {
+      this.erro = 'Não foi possível carregar os projetos.';
+      return of([]);
+    })
+  );
+}
 }
