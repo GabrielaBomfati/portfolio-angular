@@ -1,3 +1,4 @@
+
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,10 +11,7 @@ import { AsyncPipe } from '@angular/common';
   imports: [MatCardModule, MatButtonModule, AsyncPipe],
   templateUrl: './projetos.html',
   styleUrl: './projetos.css',
-
-
-
-
+  
   
 })
 export class Projetos {

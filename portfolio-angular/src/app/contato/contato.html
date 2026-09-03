@@ -1,30 +1,74 @@
-<!--src/app/contato.html-->
-<h2>Fale comigo</h2>
-<form [formGroup] = "form" (ngSubmit)="onSubmit()">
-    <label for="nome">Nome</label>
-    <input id="nome" type="text" formControlName="nome">
-    @if (form.get('nome')?.invalid && form.get('nome')?.touched) {
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title>Fale comigo</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          id="nome"
+          type="text"
+          formControlName="nome"
+        >
+      </mat-form-field>
+
+      @if (form.get('nome')?.invalid && form.get('nome')?.touched) {
         <p class="erro">⚠️ Informe um nome (mín. 3 letras)</p>
-    }
-    <label for="email">Email</label>
-    <input id="email" type="email" formControlName="email">
-    @if (form.get('email')?.invalid && form.get('email')?.touched) {
+      }
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          id="email"
+          type="email"
+          formControlName="email"
+        >
+      </mat-form-field>
+
+      @if (form.get('email')?.invalid && form.get('email')?.touched) {
         <p class="erro">⚠️ E-mail inválido</p>
-    }
-        <label for="mensagem">Mensagem</label>
-    <textarea id="mensagem" formControlName="mensagem" rows="4"></textarea>
-    @if (form.get('mensagem')?.invalid && form.get('mensagem')?.touched) {
+      }
+
+      <mat-form-field appearance="outline">
+        <mat-label>Mensagem</mat-label>
+        <textarea
+          matInput
+          id="mensagem"
+          formControlName="mensagem"
+          rows="4"
+        ></textarea>
+      </mat-form-field>
+
+      @if (form.get('mensagem')?.invalid && form.get('mensagem')?.touched) {
         <p class="erro">⚠️ Mensagem muito curta (mín. 10)</p>
-    }
-    <!--botao desabiloitado enquanto envia; troca o texto-->
-    <button type="submit" [disabled]="enviando || form.invalid">
-        {{enviando ? 'Enviando...' : 'Enviar'}}
-    </button>
-</form>
-<!--estados de retorno-->
+      }
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="enviando || form.invalid"
+      >
+        {{ enviando ? 'Enviando...' : 'Enviar' }}
+      </button>
+
+    </form>
+
+  </mat-card-content>
+
+</mat-card>
+
 @if (sucesso) {
-    <p class="ok">✅ {{sucesso}}</p>
+  <p class="ok">✅ {{sucesso}}</p>
 }
+
 @if (erro) {
-    <p class="erro">⚠️ {{erro}}</p>
+  <p class="erro">⚠️ {{erro}}</p>
 }

@@ -1,195 +1,39 @@
-/* Área principal da gestão */
 .gestao {
     width: 100%;
     max-width: 900px;
-    box-sizing: border-box;
     margin: 40px auto;
-    padding: 0 30px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Título principal */
-.gestao h2 {
-    display: block;
-    width: 100%;
     box-sizing: border-box;
-    margin: 0 0 30px;
-    padding: 0;
-    color: #570b57;
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
 }
 
-/* Títulos das seções */
-.gestao h3 {
-    color: #570b57;
-    font-size: 22px;
-    margin: 25px 0 18px;
+mat-card {
+    margin-bottom: 24px;
 }
 
-/* Formulário */
-.gestao form {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 16px;
-    border-top: 5px solid #af06d1;
-    box-shadow: 0 4px 15px rgba(87, 11, 87, 0.12);
+mat-card-content {
+    padding-top: 16px;
 }
 
-/* Labels */
-.gestao label {
-    display: block;
-    margin-top: 14px;
-    margin-bottom: 8px;
-    color: #570b57;
-    font-size: 17px;
-    font-weight: 600;
-}
-
-/* Campos */
-.gestao input,
-.gestao textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 14px;
-    border: 2px solid #EDDCED;
-    border-radius: 10px;
-    background-color: #fff;
-    color: #444;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 8px;
-}
-
-/* Campo selecionado */
-.gestao input:focus,
-.gestao textarea:focus {
-    border-color: #af06d1;
-    box-shadow: 0 0 0 3px rgba(175, 6, 209, 0.12);
-}
-
-/* Área de descrição */
-.gestao textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-/* Campo Status */
-.gestao select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 14px;
-    margin-bottom: 20px;
-    border: 2px solid #EDDCED;
-    border-radius: 10px;
-    background-color: #fff;
-    color: #444;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    outline: none;
-    cursor: pointer;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Quando clicar no Status */
-.gestao select:focus {
-    border-color: #af06d1;
-    box-shadow: 0 0 0 3px rgba(175, 6, 209, 0.12);
-}
-
-/* Opções do Status */
-.gestao select option {
-    color: #444;
-    background-color: #fff;
-}
-
-/* Botões */
-.gestao button {
-    margin-top: 12px;
-    margin-right: 8px;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 9px;
-    background-color: #570b57;
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* Hover dos botões */
-.gestao button:hover:not(:disabled) {
-    background-color: #af06d1;
-    transform: translateY(-2px);
-}
-
-/* Botão desabilitado */
-.gestao button:disabled {
-    background-color: #c9b8c9;
-    color: #f5f5f5;
-    cursor: not-allowed;
-    transform: none;
-}
-
-/* Lista dos projetos */
-.linha-projeto {
+form {
     display: flex;
-    gap: 12px;
-    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+mat-form-field {
     width: 100%;
-    box-sizing: border-box;
-    padding: 16px;
+}
+
+.botoes-formulario {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.projeto-card {
     margin-bottom: 12px;
-    background-color: #fff;
-    border-left: 5px solid #af06d1;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(87, 11, 87, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Efeito ao passar o mouse no projeto */
-.linha-projeto:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(87, 11, 87, 0.13);
-}
-
-/* Nome do projeto */
-.linha-projeto span {
-    flex: 1;
-    min-width: 0;
-    color: #570b57;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-/* Botão Editar */
-.linha-projeto button:first-of-type {
-    background-color: #570b57;
-}
-
-/* Botão Excluir */
-.linha-projeto button:last-of-type {
-    background-color: #b42318;
-}
-
-/* Hover do botão Editar */
-.linha-projeto button:first-of-type:hover {
-    background-color: #570b57;
-}
-
-/* Hover do botão Excluir */
-.linha-projeto button:last-of-type:hover {
-    background-color: #8f1d14;
-}
-
-/* Mensagem de erro */
 .erro-campo {
     color: #b00020;
     background-color: #fdecec;
@@ -200,70 +44,33 @@
     margin: 4px 0 10px;
 }
 
-/* Texto de carregamento */
-.gestao > p {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #570b57;
-    font-weight: 600;
-}
-
-/* Status dos projetos */
-.status {
-    font-weight: 700;
-    padding: 4px 8px;
-    border-radius: 6px;
-}
-
-/* Projeto publicado */
-.status.publicado {
-    color: #15803d;
-    background-color: #dcfce7;
-}
-
-/* Projeto em rascunho */
-.status.rascunho {
-    color: #a16207;
-    background-color: #fef3c7;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-
-    .gestao {
-        width: 100%;
-        max-width: 100%;
-        margin: 25px auto;
-        padding: 0 15px;
-    }
-
-    .gestao h2 {
-        font-size: 27px;
-        line-height: 1.2;
-    }
-
-    .gestao form {
-        padding: 20px;
-    }
-
-    .linha-projeto {
-        flex-wrap: wrap;
-    }
-
-    .linha-projeto span {
-        flex-basis: 100%;
-        margin-bottom: 5px;
-    }
-
-    .linha-projeto button {
-        flex: 1;
-        margin-right: 0;
-    }
-}
 .lista-vazia {
     padding: 20px;
     text-align: center;
-    color: #570b57;
-    background-color: #EDDCED;
-    border-radius: 10px;
-    font-weight: 600;
+}
+.status {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.publicado {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.rascunho {
+    background-color: #fef3c7;
+    color: #a16207;
+}
+
+@media (max-width: 600px) {
+    .gestao {
+        padding: 0 15px;
+        margin: 25px auto;
+    }
+
+    .botoes-formulario {
+        flex-wrap: wrap;
+    }
 }

@@ -3,10 +3,17 @@ import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ContatoService } from '../contato.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-contato',
   standalone: true,
-  imports: [ReactiveFormsModule], // libera formGroup/formControlName no HTML
+  imports: [ReactiveFormsModule, MatCardModule,
+MatFormFieldModule,
+MatInputModule,
+MatButtonModule], // libera formGroup/formControlName no HTML
   templateUrl: './contato.html',
   styleUrl: './contato.css',
 })

@@ -1,64 +1,185 @@
 <section class="gestao">
-    <h2>Área de Gestão</h2>
 
-    <!-- O MESMO formulario adiciona e edita. Quem decide e o editandoId-->
-     <form [formGroup]="form" (ngSubmit)="salvar()">
-        <h3>{{ editandoId ? 'Editar projeto' : 'Adicionar projeto' }}</h3>
+  <mat-card>
 
-        <label for="nome">Nome do projeto</label>
-            <input id="nome" formControlName="nome">
-            @if (form.controls.nome.touched && form.controls.nome.invalid) {
-                <p class="erro-campo">⚠️ Informe o nome do projeto (mínimo 3 letras).</p>
-            }
+    <mat-card-header>
+      <mat-card-title>Área de Gestão</mat-card-title>
+    </mat-card-header>
 
-            <label for="descricao">Descrição</label>
-            <textarea id="descricao" formControlName="descricao" rows="3"></textarea>
+    <mat-card-content>
 
-            <label for="tecnologias">Tecnologias</label>
-            <input id="tecnologias" formControlName="tecnologias">
+      <form [formGroup]="form" (ngSubmit)="salvar()">
 
-            <label for="link_github">Link do GitHub</label>
-            <input id="link_github" formControlName="link_github">
-            
-            <label for="ano">Ano</label>
-            <input id="ano" type="number" formControlName="ano">
-            @if (form.controls.ano.touched && form.controls.ano.invalid) {
-                <p class="erro-campo">⚠️ Informe o ano do projeto (ex.: 2026).</p>
-            }
+        <h3>
+          {{ editandoId ? 'Editar projeto' : 'Adicionar projeto' }}
+        </h3>
 
-            <label for="status">Status</label>
-            <select id="status" formControlName="status">
-            <option value="rascunho">Rascunho</option>
-            <option value="publicado">Publicado</option>
-            </select>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome do projeto</mat-label>
+          <input
+            matInput
+            id="nome"
+            formControlName="nome"
+          >
+        </mat-form-field>
 
-            <button type="submit" [disabled]="salvando">
-                {{salvando ? 'Salvando...' : (editandoId ? 'Salvar alterações' : 'Adicionar projeto' )}}
-            </button>
-     </form>
+        @if (form.controls.nome.touched && form.controls.nome.invalid) {
+          <p class="erro-campo">
+            ⚠️ Informe o nome do projeto (mínimo 3 letras).
+          </p>
+        }
 
-     <h3>Projetos Cadastrados</h3>
+        <mat-form-field appearance="outline">
+          <mat-label>Descrição</mat-label>
+          <textarea
+            matInput
+            id="descricao"
+            formControlName="descricao"
+            rows="3"
+          ></textarea>
+        </mat-form-field>
 
-    @if (carregando){
-        <p>Carregando projetos...</p>
-    }
-    @if (erro) {
-        <p class="erro-campo"> {{erro}}</p>
-     }
-     @if (erroExclusao) {
-    <p class="erro-campo">{{erroExclusao}}</p>
-}
+        <mat-form-field appearance="outline">
+          <mat-label>Tecnologias</mat-label>
+          <input
+            matInput
+            id="tecnologias"
+            formControlName="tecnologias"
+          >
+        </mat-form-field>
 
-     @for (p of projetos; track p.id) {
-        <div class="linha-projeto">
-            <span>{{p.nome}} ({{p.ano}}) — <span class="status" [class.publicado]="p.status === 'publicado'" [class.rascunho]="p.status === 'rascunho'">
-        {{p.status}}
-    </span></span>
-            <button type="button" (click)="editar(p)">Editar</button>
-            <button type="button" (click)="excluir(p)">Excluir</button>
+        <mat-form-field appearance="outline">
+          <mat-label>Link do GitHub</mat-label>
+          <input
+            matInput
+            id="link_github"
+            formControlName="link_github"
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Ano</mat-label>
+          <input
+            matInput
+            id="ano"
+            type="number"
+            formControlName="ano"
+          >
+        </mat-form-field>
+
+        @if (form.controls.ano.touched && form.controls.ano.invalid) {
+          <p class="erro-campo">
+            ⚠️ Informe o ano do projeto (ex.: 2026).
+          </p>
+        }
+
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+
+          <mat-select formControlName="status">
+            <mat-option value="rascunho">Rascunho</mat-option>
+            <mat-option value="publicado">Publicado</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+
+        <div class="botoes-formulario">
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="salvando"
+          >
+            {{ salvando ? 'Salvando...' : (editandoId ? 'Salvar alterações' : 'Adicionar projeto') }}
+          </button>
+
+          <button
+            mat-button
+            type="button"
+            (click)="sair()"
+          >
+            Sair
+          </button>
+
         </div>
-     }
-     @if (!carregando && projetos.length === 0) {
-    <p class="lista-vazia">Você ainda não cadastrou nenhum projeto.</p>
-}
+
+      </form>
+
+    </mat-card-content>
+
+  </mat-card>
+
+
+  <h3>Projetos Cadastrados</h3>
+
+  @if (carregando) {
+    <p>Carregando projetos...</p>
+  }
+
+  @if (erro) {
+    <p class="erro-campo">{{ erro }}</p>
+  }
+
+  @if (erroExclusao) {
+    <p class="erro-campo">{{ erroExclusao }}</p>
+  }
+
+  @for (p of projetos; track p.id) {
+
+    <mat-card class="projeto-card">
+
+      <mat-card-header>
+        <mat-card-title>{{ p.nome }}</mat-card-title>
+
+        <mat-card-subtitle>
+          {{ p.ano }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <p>
+  Status:
+  <strong
+    class="status"
+    [class.publicado]="p.status === 'publicado'"
+    [class.rascunho]="p.status === 'rascunho'"
+  >
+    {{ p.status }}
+  </strong>
+</p>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+
+        <button
+          mat-button
+          type="button"
+          (click)="editar(p)"
+        >
+          Editar
+        </button>
+
+        <button
+          mat-button
+          type="button"
+          (click)="excluir(p)"
+        >
+          Excluir
+        </button>
+
+      </mat-card-actions>
+
+    </mat-card>
+
+  }
+
+  @if (!carregando && projetos.length === 0) {
+    <p class="lista-vazia">
+      Você ainda não cadastrou nenhum projeto.
+    </p>
+  }
+
 </section>

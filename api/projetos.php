@@ -2,9 +2,11 @@
 // api/projetos.php - le, cria. altera e apaga projetos (CRUD completo) 
  
 header('Content-Type: application/json; charset=utf-8'); 
-header('Access-Control-Allow-Origin: *'); 
+header('Access-Control-Allow-Origin: https://solid-waddle-696p4pwx799qf55r4-4200.app.github.dev');
+header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS'); 
 header('Access-Control-Allow-Headers: Content-Type'); 
+session_start();
  
 // Qualquer erro de PHP ou de banco vira JSON com status 500. 
 // Sem isso, um tropeço no banco devolve tela em branco e você fica sem pista. 
@@ -21,6 +23,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(204); 
     exit; 
 } 
+$metodo = $_SERVER['REQUEST_METHOD'];
+
+$todos = isset($_GET['todos']) && $_GET['todos'] === '1';
+
+if (($metodo !== 'GET' || $todos) && empty($_SESSION['logado'])) {
+    http_response_code(401);
+
+    echo json_encode([
+        'erro' => 'Acesso nao autorizado. Faca login.'
+    ]);
+
+    exit;
+}
  
 try { 
  

@@ -17,24 +17,41 @@ export class ProjetoService {
     private http = inject(HttpClient);
     private url = 'https://solid-waddle-696p4pwx799qf55r4-8000.app.github.dev/api/projetos.php';
 
+    // GET público
     listar(): Observable<Projeto[]> {
         return this.http.get<Projeto[]>(this.url);
     }
+
+    // GET da gestão - precisa da sessão
     listarTodos(): Observable<Projeto[]> {
-    return this.http.get<Projeto[]>(`${this.url}?todos=1`);
-}
+        return this.http.get<Projeto[]>(`${this.url}?todos=1`, {
+            withCredentials: true
+        });
+    }
 
-    // POST: o projeto vai inteiro no corpo. Sem id - quem gera o id e o banco.
+    // POST - precisa da sessão
     criar(projeto: Projeto): Observable<{id?: number; mensagem?: string}> {
-        return this.http.post<{id?: number; mensagem?: string}>(this.url, projeto);
+        return this.http.post<{id?: number; mensagem?: string}>(
+            this.url,
+            projeto,
+            { withCredentials: true }
+        );
     }
 
-    //PUT: o id vai na URL (qual projeto) e o projeto vai noc orpo (o que gravar).
-    atualizar(id: number, projeto:Projeto) : Observable<{id?: number; mensagem?: string}>{
-        return this.http.put<{id?: number; mensagem?: string}>(`${this.url}?id=${id}`, projeto);
+    // PUT - precisa da sessão
+    atualizar(id: number, projeto: Projeto): Observable<{id?: number; mensagem?: string}> {
+        return this.http.put<{id?: number; mensagem?: string}>(
+            `${this.url}?id=${id}`,
+            projeto,
+            { withCredentials: true }
+        );
     }
- // DELETE: o id vai na URL para indicar qual projeto será excluído.
+
+    // DELETE - precisa da sessão
     excluir(id: number): Observable<{mensagem?: string}> {
-        return this.http.delete<{mensagem?: string}>(`${this.url}?id=${id}`);
+        return this.http.delete<{mensagem?: string}>(
+            `${this.url}?id=${id}`,
+            { withCredentials: true }
+        );
     }
 }

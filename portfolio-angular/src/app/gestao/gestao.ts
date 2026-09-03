@@ -3,11 +3,22 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { ProjetoService, Projeto } from '../projeto.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmarExclusao } from '../confirmar-exclusao/confirmar-exclusao';
+import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-gestao',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatCardModule,
+MatFormFieldModule,
+MatInputModule,
+MatSelectModule,
+MatButtonModule],
   templateUrl: './gestao.html',
   styleUrl: './gestao.css',
 })
@@ -15,6 +26,8 @@ export class Gestao implements OnInit {
   private service = inject(ProjetoService);
   private cdr = inject(ChangeDetectorRef);
   private dialog = inject(MatDialog);
+  private router = inject(Router);
+  private loginService = inject(LoginService);
 
   // A lista que a tela mostra, e os estados dela
   projetos: Projeto[] = [];
@@ -128,5 +141,17 @@ export class Gestao implements OnInit {
         }
       });
     });
-  }
+  }sair() {
+  this.loginService.sair().subscribe({
+    next: () => {
+      sessionStorage.removeItem('logado');
+      this.router.navigate(['/login']);
+    },
+
+    error: () => {
+      sessionStorage.removeItem('logado');
+      this.router.navigate(['/login']);
+    }
+  });
+}
 }
