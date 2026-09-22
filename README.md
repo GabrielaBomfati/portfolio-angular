@@ -285,3 +285,18 @@ R2: portfolio-angular/src/app/gestao/gestao.ts e gestao.html — a tela lista, c
 R3: gestao.ts — após criar ou editar, carregar() atualiza a lista; após excluir, filter() remove o projeto diretamente, sem F5.
 R4: README.md — explica por que o mesmo endpoint realiza quatro operações, registra o método, status e Content-Type vistos no Network e explica 201 para criação e 204 para exclusão. Também responde à objeção do <a href> com evidência do curl.
 R5: portfolio-angular/src/index.html possui viewport; gestao.css possui responsividade; o README contém instruções de execução e a ficha de diagnóstico.
+
+## API em Node (Aula 21)
+
+Uma segunda versão da API, em JavaScript, na pasta `api-node/`.
+O contrato de `GET /api/projetos` é o mesmo do `api/projetos.php`.
+
+Como rodar:
+
+    cd api-node
+    npm install
+    node server.js
+
+A API sobe em http://localhost:3000. Teste com:
+
+    curl -i http://localhost:3000/api/projetos

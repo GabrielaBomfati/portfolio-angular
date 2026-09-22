@@ -15,7 +15,7 @@ export interface Projeto {
 @Injectable({ providedIn: 'root'})
 export class ProjetoService {
     private http = inject(HttpClient);
-    private url = 'https://solid-waddle-696p4pwx799qf55r4-8000.app.github.dev/api/projetos.php';
+    private url = 'https://solid-waddle-696p4pwx799qf55r4-3000.app.github.dev/api/projetos';
 
     // GET público
     listar(): Observable<Projeto[]> {
