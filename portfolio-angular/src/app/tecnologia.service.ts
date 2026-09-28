@@ -13,7 +13,7 @@ export interface Tecnologia {
 @Injectable({ providedIn: 'root'})
 export class TecnologiaService {
     private http = inject(HttpClient);
-    private url = 'https://solid-waddle-696p4pwx799qf55r4-8000.app.github.dev/api/tecnologias.php';
+    private url = 'https://solid-waddle-696p4pwx799qf55r4-3000.app.github.dev/api/tecnologias';
 
     listar(): Observable<Tecnologia[]> {
         return this.http.get<Tecnologia[]>(this.url);
