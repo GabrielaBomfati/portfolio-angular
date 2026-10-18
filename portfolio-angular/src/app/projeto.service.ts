@@ -40,18 +40,17 @@ export class ProjetoService {
 
     // PUT - precisa da sessão
     atualizar(id: number, projeto: Projeto): Observable<{id?: number; mensagem?: string}> {
-        return this.http.put<{id?: number; mensagem?: string}>(
-            `${this.url}?id=${id}`,
+        return this.http.put<{id?: number; mensagem?: string}>
+        (`${this.url}/${id}`,
             projeto,
             { withCredentials: true }
         );
     }
 
-    // DELETE - precisa da sessão
-    excluir(id: number): Observable<{mensagem?: string}> {
-        return this.http.delete<{mensagem?: string}>(
-            `${this.url}?id=${id}`,
-            { withCredentials: true }
-        );
-    }
+    excluir(id: number): Observable<void> {
+    return this.http.delete<void>(
+        `${this.url}/${id}`,
+        { withCredentials: true }
+    );
+}
 }

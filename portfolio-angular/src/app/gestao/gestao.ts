@@ -73,7 +73,14 @@ export class Gestao implements OnInit {
   // patchValue joga os campos dele para dentro do formulario
   editar(p: Projeto) {
     this.editandoId = p.id ?? null;
-    this.form.patchValue(p);
+    this.form.patchValue({
+      nome: p.nome,
+      descricao: p.descricao,
+      tecnologias: p.tecnologias,
+      link_github: p.link_github,
+      ano: p.ano,
+      status: p.status
+});
   }
 
   salvar() {
@@ -97,7 +104,14 @@ export class Gestao implements OnInit {
       next: () => {
         this.salvando = false;
         this.carregar();
-        this.form.reset({ ano: 2026 });
+        this.form.reset({
+        nome: '',
+        descricao: '',
+        tecnologias: '',
+        link_github: '',
+        ano: 2026,
+        status: 'publicado'
+});
         this.editandoId = null;
       },
 

@@ -54,6 +54,7 @@
             matInput
             id="link_github"
             formControlName="link_github"
+            placeholder="https://github.com/usuario/repositorio"
           >
         </mat-form-field>
 
@@ -110,7 +111,6 @@
 
   </mat-card>
 
-
   <h3>Projetos Cadastrados</h3>
 
   @if (carregando) {
@@ -140,15 +140,26 @@
       <mat-card-content>
 
         <p>
-  Status:
-  <strong
-    class="status"
-    [class.publicado]="p.status === 'publicado'"
-    [class.rascunho]="p.status === 'rascunho'"
-  >
-    {{ p.status }}
-  </strong>
-</p>
+          Status:
+          <strong
+            class="status"
+            [class.publicado]="p.status === 'publicado'"
+            [class.rascunho]="p.status === 'rascunho'"
+          >
+            {{ p.status }}
+          </strong>
+        </p>
+
+        <p>
+          <a
+            class="link-github"
+            [href]="p.link_github"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver no GitHub
+          </a>
+        </p>
 
       </mat-card-content>
 
