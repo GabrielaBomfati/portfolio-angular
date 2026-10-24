@@ -36,9 +36,12 @@ export class Login {
 
     this.loginService.entrar(this.usuario, this.senha).subscribe({
 
-      next: () => {
+      next: (resposta) => {
+  sessionStorage.setItem('token', resposta.token);
   sessionStorage.setItem('logado', 'true');
+
   window.dispatchEvent(new Event('login'));
+
   this.entrando = false;
   this.router.navigate(['/gestao']);
 },

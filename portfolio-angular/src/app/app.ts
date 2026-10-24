@@ -48,22 +48,10 @@ export class App implements OnInit {
   }
 
   sair() {
+  this.loginService.sair();
 
-  this.loginService.sair().subscribe({
-
-    next: () => {
-      sessionStorage.removeItem('logado');
-      this.logado = false;
-      this.router.navigate(['/login']);
-    },
-
-    error: () => {
-      sessionStorage.removeItem('logado');
-      this.logado = false;
-      this.router.navigate(['/login']);
-    }
-
-  });
+  this.logado = false;
+  this.router.navigate(['/login']);
 }
 }
 

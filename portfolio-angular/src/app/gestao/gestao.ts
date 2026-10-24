@@ -156,16 +156,9 @@ export class Gestao implements OnInit {
       });
     });
   }sair() {
-  this.loginService.sair().subscribe({
-    next: () => {
-      sessionStorage.removeItem('logado');
-      this.router.navigate(['/login']);
-    },
+  this.loginService.sair();
 
-    error: () => {
-      sessionStorage.removeItem('logado');
-      this.router.navigate(['/login']);
-    }
-  });
+  window.dispatchEvent(new Event('login'));
+  this.router.navigate(['/login']);
 }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface RespostaLogin {
+  token: string;
   mensagem?: string;
   erro?: string;
 }
@@ -14,27 +15,17 @@ export class LoginService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'https://solid-waddle-696p4pwx799qf55r4-8000.app.github.dev/api/login.php';
+  private apiUrl = 'https://solid-waddle-696p4pwx799qf55r4-3000.app.github.dev/api/login';
 
-  entrar(usuario: string, senha: string): Observable<RespostaLogin> {
-  return this.http.post<RespostaLogin>(
-    this.apiUrl,
-    {
-      usuario,
-      senha
-    },
-    {
-      withCredentials: true
-    }
-  );
+  entrar(email: string, senha: string): Observable<RespostaLogin> {
+    return this.http.post<RespostaLogin>(
+      this.apiUrl,
+      { email, senha }
+    );
   }
-  sair(): Observable<{ mensagem?: string }> {
-  return this.http.post<{ mensagem?: string }>(
-    'https://solid-waddle-696p4pwx799qf55r4-8000.app.github.dev/api/logout.php',
-    {},
-    {
-      withCredentials: true
-    }
-  );
-}
+
+  sair(): void {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('logado');
+  }
 }
