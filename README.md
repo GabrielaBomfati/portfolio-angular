@@ -703,3 +703,13 @@ Content-Type: application/json; charset=utf-8
 - Aula 22: Integrar API Node.js ao MariaDB.
 - Aula 23: Implementar CRUD de projetos.
 - Aula 24: Adicionar autenticação JWT, CRUD protegido e leitura de rascunhos.
+
+### Aula 25: o Portfolio em React
+
+O front novo nasce em `portfolio-react/` (Vite + React), ao lado do Angular. Para rodar:
+
+    cd portfolio-react
+    npm install
+    npm run dev
+
+A tela abre na porta 5173. Por enquanto os projetos sao fixos no `src/App.jsx`; a Aula 27 os traz da API.

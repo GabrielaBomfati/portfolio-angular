@@ -1,0 +1,14 @@
+/* Portfolio em React - estilos globais (Aula 25). Um arquivo só: a Aula 30 cuida do acabamento*/
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f6fa; color: #1f2937; }
+header { background-color: #3b579d; color: #ffffff; padding: 12px 24px; display:  flex; align-items: center;}
+header h1 { margin: 0; font-size: 20px; flex: 1; }
+nav a { color: #ffffff; margin-left: 16px; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.card { background-color: #ffffff; border: 1px solid #d9dee8; border-radius: 12px; padding: 16px;}
+.card h3 { margin: 0 0 4px; }
+.card .meta { margin: 0 0 8px; color: #6b7280; font-size: 14px; }
+.card a { color: #3b579d; font-weight: bold; }
+footer { text-align: center; color: #6b7280; padding: 24px; font-size: 14px; }
